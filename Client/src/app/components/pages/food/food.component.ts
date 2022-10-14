@@ -11,7 +11,7 @@ import { Food } from 'src/app/shared/models/Food.model';
 })
 export class FoodComponent implements OnInit {
 
-  food!:Food | undefined;
+  food!:Food;
   foodID!:string;
   constructor(private foodService: FoodService, private route: ActivatedRoute, private cartService: CartService, private router: Router) { }
 
@@ -25,13 +25,18 @@ export class FoodComponent implements OnInit {
       if(!params['foodID']) return;
       this.foodID = params['foodID']
       this.getFoodItem()
-      console.log(this.food)
+      console.log(this.foodID)
 
     })
   }
 
   getFoodItem(){
-    this.food = this.foodService.getFoodByID(this.foodID)
+    this.foodService.getFoodByID(this.foodID)
+        .subscribe((food:Food[])=>{
+          this.food = food[0]
+          console.log(this.food);
+
+        })
   }
 
   addToCart(){

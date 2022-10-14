@@ -22,7 +22,10 @@ export class HomeComponent implements OnInit {
   }
 
   initFood(){
-    this.foods = this.foodService.getAllFoods()
+    this.foodService.getAllFoods()
+        .subscribe( (food:Food[]) =>
+          this.foods = food
+    )
   }
 
   getSearchTerms(){
@@ -40,9 +43,15 @@ export class HomeComponent implements OnInit {
   })
  }
  sendSearchTerms(){
-  this.foods = this.foodService.getFoodsBySearchTerms(this.searchTerm)
+  this.foodService.getFoodsBySearchTerms(this.searchTerm)
+      .subscribe( (food:Food[]) => {
+        this.foods = food
+      })
  }
  sendSearchByTag(){
-  this.foods = this.foodService.getFoodByTags(this.tag)
+  this.foodService.getFoodByTags(this.tag)
+      .subscribe( (food:Food[]) => {
+        this.foods = food
+      })
  }
 }

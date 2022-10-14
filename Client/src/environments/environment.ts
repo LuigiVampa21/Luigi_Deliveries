@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  BASE_URL: 'http://localhost:5000/api',
+  FOODS_URL: `http://localhost:5000/api/foods`,
+  FOODS_TAGS_URL: `http://localhost:5000/api/foods/tags`,
+  FOODS_BY_TAGS_URL: `http://localhost:5000/api/foods/tags/`,
+  FOODS_SEARCH_URL: `http://localhost:5000/api/foods/search/`,
+  FOODS_BY_ID: `http://localhost:5000/api/foods/`
 };
 
 /*
