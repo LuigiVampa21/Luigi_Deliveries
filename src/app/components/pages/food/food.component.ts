@@ -25,6 +25,8 @@ export class FoodComponent implements OnInit {
       if(!params['foodID']) return;
       this.foodID = params['foodID']
       this.getFoodItem()
+      console.log(this.food)
+
     })
   }
 
