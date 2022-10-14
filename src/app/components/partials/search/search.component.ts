@@ -9,7 +9,8 @@ import { FoodService } from 'src/app/services/food.service';
 })
 export class SearchComponent implements OnInit {
 
-  searchTerm= '';
+  searchTerm = '';
+  tag!:string;
 
   constructor(private foodService: FoodService, private route: ActivatedRoute, private router:Router) { }
 
@@ -20,8 +21,9 @@ export class SearchComponent implements OnInit {
   getSearchterms(){
     this.route.params
     .subscribe((params: Params)=>{
-      if(!params['searchTerm']) return;
-      this.searchTerm = params['searchTerm']
+      if(!params['searchTerm'] && !params['tag']) return;
+      this.searchTerm = params['searchTerm'];
+      this.tag = params['tag'];
     })
   }
 

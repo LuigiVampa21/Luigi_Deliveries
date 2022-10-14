@@ -12,12 +12,13 @@ import { Food } from 'src/app/shared/models/food.model';
 export class HomeComponent implements OnInit {
 
   foods:Food[] = [];
-  searchTerm!:string
+  searchTerm = '';
+  tag!:string;
 
   constructor(private foodService: FoodService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-this.getSearchTerms()
+    this.getSearchTerms()
   }
 
   initFood(){
@@ -27,12 +28,21 @@ this.getSearchTerms()
   getSearchTerms(){
     this.route.params
       .subscribe((params: Params)=>{
-        if(!params['searchTerm']) this.initFood();
-        this.searchTerm = params['searchTerm']
-        this.sendSearchTerms()
+        if(!params['searchTerm'] && !params['tag']) this.initFood();
+        if(params['searchTerm']){
+          this.searchTerm = params['searchTerm']
+          this.sendSearchTerms()
+        }
+        if(params['tag']){
+          this.tag = params['tag'];
+          this.sendSearchByTag()
+        }
   })
  }
  sendSearchTerms(){
   this.foods = this.foodService.getFoodsBySearchTerms(this.searchTerm)
+ }
+ sendSearchByTag(){
+  this.foods = this.foodService.getFoodByTags(this.tag)
  }
 }

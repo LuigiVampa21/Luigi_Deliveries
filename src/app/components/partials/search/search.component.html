@@ -4,7 +4,7 @@
     type="text"
     placeholder="Search Food Mine!"
     (keyup.enter)="initSearch(s.value)"
-    [value]="searchTerm"
+    [value]="searchTerm ? searchTerm : ''"
   />
   <button (click)="initSearch(s.value)">Search</button>
 </div>
