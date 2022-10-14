@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Cart } from '../shared/models/cart.model';
-import { CartItem } from '../shared/models/cartItem.model';
+import { Cart } from '../shared/models/Cart.model';
+import { CartItem } from '../shared/models/CartItem.model';
 import { Food } from '../shared/models/Food.model';
-
 
 
 @Injectable({
@@ -11,8 +10,8 @@ import { Food } from '../shared/models/Food.model';
 })
 export class CartService {
 
-  private cart!:Cart;
-  private cartSubject$!:BehaviorSubject<Cart>;
+  private cart:Cart = this.getCartFromLocalStorage();
+  private cartSubject$:BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
 
   constructor() { }
 
