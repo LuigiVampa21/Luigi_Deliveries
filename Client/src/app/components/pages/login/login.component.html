@@ -3,37 +3,29 @@
     <app-title title="Login"></app-title>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
-      <input
-        formControlName="email"
+      <text-input
+        [control]="loginForm.controls['email']"
+        [showErrorsWhen]="isSubmitted"
         type="email"
         label="Email"
-        placeholder="email"
-      />
-      <div
-        class="error-list"
-        *ngIf="loginForm.controls['email'].invalid && isSubmitted"
-      >
-        Invalid email
-      </div>
-      <input
-        formControlName="password"
+      ></text-input>
+
+      <text-input
+        [control]="loginForm.controls['password']"
+        [showErrorsWhen]="isSubmitted"
         type="password"
         label="Password"
-        placeholder="password"
-      />
-      <div
-        class="error-list"
-        *ngIf="loginForm.controls['password'].invalid && isSubmitted"
-      >
-        Invalid password
-      </div>
+      ></text-input>
 
-      <button type="submit">Login</button>
+      <button type="submit"
+      text="Login"
+      >Login</button>
+      <default-button></default-button>
       <div class="register">
         New user? &nbsp;
-        <!-- <a routerLink="/register" [queryParams]="{ returnUrl: returnUrl }"> -->
-        Register here
-        <!-- </a> -->
+        <a routerLink="/register" [queryParams]="{ returnUrl: returnUrl }">
+          Register here
+        </a>
       </div>
     </form>
   </div>

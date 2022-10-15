@@ -1,0 +1,11 @@
+<input-container [label]="label">
+  <input
+    [formControl]="formControl"
+    [type]="label"
+    [placeholder]="label"
+  />
+  <input-validation
+    [control]="control"
+    [showErrorsWhen]="showErrorsWhen"
+  ></input-validation>
+</input-container>
