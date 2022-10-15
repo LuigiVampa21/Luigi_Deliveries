@@ -21,7 +21,6 @@ export class CartComponent implements OnInit {
     this.cartService.getCartObservable()
         .subscribe( c => {
           this.cart = c;
-          console.log(this.cart);
         })
   }
 

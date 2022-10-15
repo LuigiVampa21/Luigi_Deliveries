@@ -11,7 +11,10 @@ export const environment = {
   FOODS_SEARCH_URL: `http://localhost:5000/api/foods/search/`,
   FOODS_BY_ID: 'http://localhost:5000/api/foods/',
   USERS_LOGIN_URL: 'http://localhost:5000/api/users/login',
-  USERS_REGISTER_URL: 'http://localhost:5000/api/users/register'
+  USERS_REGISTER_URL: 'http://localhost:5000/api/users/register',
+
+
+  USER_KEY: 'User'
 };
 
 /*

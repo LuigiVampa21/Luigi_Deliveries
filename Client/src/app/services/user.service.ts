@@ -14,7 +14,9 @@ export class UserService {
   API_USERS_LOGIN = environment.USERS_LOGIN_URL;
   API_USERS_REGISTER = environment.USERS_REGISTER_URL;
 
-  userSub$: BehaviorSubject<User> = new BehaviorSubject(new User());
+  USER_KEY = environment.USER_KEY;
+
+  userSub$: BehaviorSubject<User> = new BehaviorSubject(this.getUserFromLocalStorage());
   userObs$!:Observable<User>;
 
   constructor( private http: HttpClient, private toastrService: ToastrService) {
@@ -22,19 +24,39 @@ export class UserService {
    }
 
   onLogin(userData:UserLogin){
-    this.http.post<User>(this.API_USERS_LOGIN, userData)
+    return this.http.post<User>(this.API_USERS_LOGIN, userData)
         .pipe(
           tap({
             next:(user:User) => {
+              this.setUserToLocalStorage(user)
               this.userSub$.next(user);
               this.toastrService.success(
                 `Congrats ${user.name} you logged In Successfully !`
               )
             },
             error:(errorResponse) => {
-
+              this.toastrService.error(
+                errorResponse.error,
+                `Login Failed`
+              )
             }
           }
         )
  ) }
+
+  onLogout(){
+    this.userSub$.next(new User());
+    localStorage.removeItem(this.USER_KEY);
+    window.location.reload()
+  }
+
+ private setUserToLocalStorage(user:User){
+  localStorage.setItem(this.USER_KEY, JSON.stringify(user))
+ }
+
+ private getUserFromLocalStorage():User{
+  const userJson = localStorage.getItem(this.USER_KEY);
+  if(!userJson) return new User();
+  return JSON.parse(userJson)
+ }
 }
