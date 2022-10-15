@@ -9,7 +9,9 @@ export const environment = {
   FOODS_TAGS_URL: `http://localhost:5000/api/foods/tags`,
   FOODS_BY_TAGS_URL: `http://localhost:5000/api/foods/tags/`,
   FOODS_SEARCH_URL: `http://localhost:5000/api/foods/search/`,
-  FOODS_BY_ID: `http://localhost:5000/api/foods/`
+  FOODS_BY_ID: 'http://localhost:5000/api/foods/',
+  USERS_LOGIN_URL: 'http://localhost:5000/api/users/login',
+  USERS_REGISTER_URL: 'http://localhost:5000/api/users/register'
 };
 
 /*

@@ -55,7 +55,10 @@ app.post('/api/users/login', (req,res) => {
     if(user){
         const token = generateTokenReponse(user)
         user.token = token
-        res.send('Successful'+ token)
+        res.send({
+            status: 'Success',
+            token
+        })
     }
     res.send('Wrong data')
 
