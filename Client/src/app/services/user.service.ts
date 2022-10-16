@@ -26,7 +26,8 @@ export class UserService {
   onLogin(userData:UserLogin){
     return this.http.post<User>(this.API_USERS_LOGIN, userData)
         .pipe(
-          tap({
+          tap(
+            {
             next:(user:User) => {
               this.setUserToLocalStorage(user)
               this.userSub$.next(user);

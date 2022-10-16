@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config();
-import asyncHandler from 'express-async-handler';
+import 'express-async-errors'
 import path from 'path'
 import express from "express"
 import cors  from "cors"

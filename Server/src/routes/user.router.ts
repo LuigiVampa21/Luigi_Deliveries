@@ -5,17 +5,17 @@ import { UserModel } from '../models/user.model';
 
 const router = Router();
 
-router.post('/login', (req,res) => {
+router.post('/login', async (req,res) => {
     const { email,password } = req.body;
-    const user = sample_users.find(user => user.email === email && user.password === password);
+    const user = await UserModel.findOne({email})
     if(user){
         const token = generateTokenReponse(user)
-        user.token = token
         res.send({
             user,
+            token
         })
     }
-    res.send('Wrong data')
+    res.status(200).send('Wrong data')
 
 })
 

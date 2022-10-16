@@ -32,8 +32,8 @@ export class FoodComponent implements OnInit {
 
   getFoodItem(){
     this.foodService.getFoodByID(this.foodID)
-        .subscribe((food:Food[])=>{
-          this.food = food[0]
+        .subscribe((food:Food)=>{
+          this.food = food
           console.log(this.food);
 
         })
