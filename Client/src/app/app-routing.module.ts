@@ -5,6 +5,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { FoodComponent } from './components/pages/food/food.component';
 import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 import { LoginComponent } from './components/pages/login/login.component';
+import { RegisterComponent } from './components/pages/register/register.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'food/:foodID', component: FoodComponent},
   {path: 'cart', component: CartComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: '**', component: NotFoundComponent}
 ];
 

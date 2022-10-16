@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { User } from '../shared/models/user.model';
+import { UserRegister } from '../shared/interfaces/user.register.interface';
 import { UserLogin } from '../shared/interfaces/user.login.interface';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
@@ -44,6 +45,29 @@ export class UserService {
           }
         )
  ) }
+
+  onRegister(userData:UserRegister){
+    return this.http.post<User>(this.API_USERS_REGISTER, userData)
+    .pipe(
+      tap(
+        {
+        next:(user:User) => {
+          this.setUserToLocalStorage(user)
+          this.userSub$.next(user);
+          this.toastrService.success(
+            `Congrats ${user.name} you registered Successfully !`
+          )
+        },
+        error:(errorResponse) => {
+          this.toastrService.error(
+            errorResponse.error,
+            `Registration Failed`
+          )
+        }
+      }
+    )
+)
+  }
 
   onLogout(){
     this.userSub$.next(new User());
