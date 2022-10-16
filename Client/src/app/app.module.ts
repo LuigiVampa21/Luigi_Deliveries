@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { RatingModule } from 'ng-starrating';
@@ -23,6 +23,7 @@ import { InputValidationComponent } from './components/partials/input-validation
 import { TextInputComponent } from './components/partials/text-input/text-input.component';
 import { DefaultButtonComponent } from './components/partials/default-button/default-button.component';
 import { LoadingComponent } from './components/partials/loading/loading.component'
+import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 
 
 @NgModule({
@@ -57,7 +58,11 @@ import { LoadingComponent } from './components/partials/loading/loading.componen
       newestOnTop:false
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
