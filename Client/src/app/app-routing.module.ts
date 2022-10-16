@@ -6,6 +6,7 @@ import { FoodComponent } from './components/pages/food/food.component';
 import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { RegisterComponent } from './components/pages/register/register.component';
+import { CheckoutComponent } from './components/pages/checkout/checkout.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'cart', component: CartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'checkout', component: CheckoutComponent},
   {path: '**', component: NotFoundComponent}
 ];
 

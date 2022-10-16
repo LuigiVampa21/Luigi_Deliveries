@@ -24,6 +24,10 @@ export class UserService {
     this.userObs$ = this.userSub$.asObservable()
    }
 
+  getCurrentUser() :User{
+    return this.userSub$.value;
+  }
+
   onLogin(userData:UserLogin){
     return this.http.post<User>(this.API_USERS_LOGIN, userData)
         .pipe(
