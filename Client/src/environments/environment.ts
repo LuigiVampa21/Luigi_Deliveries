@@ -14,6 +14,7 @@ export const environment = {
   USERS_REGISTER_URL: 'http://localhost:5000/api/users/register',
   ORDER_URL: 'http://localhost:5000/api/orders',
   ORDER_CREATE: 'http://localhost:5000/api/orders/create',
+  ORDER_GET: 'http://localhost:5000/api/orders/newOrderForCurrentUser',
 
 
   USER_KEY: 'User'

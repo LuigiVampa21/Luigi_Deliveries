@@ -7,6 +7,8 @@ import { NotFoundComponent } from './components/partials/not-found/not-found.com
 import { LoginComponent } from './components/pages/login/login.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { CheckoutComponent } from './components/pages/checkout/checkout.component';
+import { PaymentComponent } from './components/pages/payment/payment.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -18,7 +20,8 @@ const routes: Routes = [
   {path: 'cart', component: CartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'checkout', component: CheckoutComponent},
+  {path: 'checkout', component: CheckoutComponent, canActivate:[AuthGuard]},
+  {path: 'payment', component: PaymentComponent, canActivate:[AuthGuard]},
   {path: '**', component: NotFoundComponent}
 ];
 

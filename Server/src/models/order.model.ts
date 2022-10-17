@@ -64,11 +64,11 @@ export interface Order{
     },
       address: {
         type: String,
-         required: true
+        //  required: true
     },
       addressLatLng: {
         type: LatLngSchema,
-         required: true
+        //  required: true
     },
       paymentId: {
         type: String

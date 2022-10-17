@@ -12,8 +12,9 @@ router.use(auth);
 router.post('/create', async (req: any,res: any)=>{
     const requestOrder = req.body;
     const { id } = req.user;
+    console.log(id);
 if(requestOrder.items.length <= 0){
-    res.status(400).send('Cart is empty');
+    res.status(StatusCodes.BAD_REQUEST).send('Cart is empty');
     return;
 }
     await OrderModel.deleteOne({
@@ -22,18 +23,19 @@ if(requestOrder.items.length <= 0){
     })
 
     const newOrder = new OrderModel({...requestOrder, user: req.user.id})
+    await newOrder.save()
     res.send(newOrder)
 })
 
-// router.post('/create', createOrder)
 
-
-
-// router.get('/newOrderForCurrentUser', async (req:any,res ) => {
-    // const order= await getNewOrderForCurrentUser(req);
-    // if(order) res.send(order);
-    // else res.status(400).send();
-// })
+router.get('/newOrderForCurrentUser', async (req:any,res ) => {
+    const order= await OrderModel.findOne({
+        user: req.user.id,
+        status: OrderStatus.NEW
+    });
+    if(order) res.send(order);
+    else res.status(StatusCodes.BAD_REQUEST).send();
+})
 
 
 // router.post('/pay', asyncHandler( async (req:any, res) => {

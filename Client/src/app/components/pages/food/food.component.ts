@@ -25,8 +25,6 @@ export class FoodComponent implements OnInit {
       if(!params['foodID']) return;
       this.foodID = params['foodID']
       this.getFoodItem()
-      console.log(this.foodID)
-
     })
   }
 
@@ -34,8 +32,6 @@ export class FoodComponent implements OnInit {
     this.foodService.getFoodByID(this.foodID)
         .subscribe((food:Food)=>{
           this.food = food
-          console.log(this.food);
-
         })
   }
 

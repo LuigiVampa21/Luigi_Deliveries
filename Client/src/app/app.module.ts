@@ -27,6 +27,8 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { CheckoutComponent } from './components/pages/checkout/checkout.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 import { MapComponent } from './components/partials/map/map.component';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { PaymentComponent } from './components/pages/payment/payment.component';
 
 
 @NgModule({
@@ -50,6 +52,7 @@ import { MapComponent } from './components/partials/map/map.component';
     CheckoutComponent,
     OrderItemsListComponent,
     MapComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +68,9 @@ import { MapComponent } from './components/partials/map/map.component';
     }),
   ],
   providers: [
+    {
+      provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true
+    },
     {
       provide:HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi:true
     }
