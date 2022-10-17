@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { string } from 'joi';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/shared/models/user.model';
+import { User } from 'src/app/shared/models/User.model';
 
 @Component({
   selector: 'app-header',

@@ -1,5 +1,5 @@
 import {model, Schema, Types} from 'mongoose';
-// import { OrderStatus } from '../constants/order_status';
+import { OrderStatus } from '../constants/order.status.enum';
 import { Food, FoodSchema } from './food.model';
 
 export interface LatLng{
@@ -51,7 +51,7 @@ export interface Order{
     address: string;
     addressLatLng:LatLng
     paymentId: string;
-    // status: OrderStatus;
+    status: OrderStatus;
     user: Types.ObjectId;
     createdAt: Date;
     updatedAt: Date
@@ -81,10 +81,10 @@ export interface Order{
         type: [OrderItemSchema],
          required: true
     },
-    //   status: {
-    //     type: String,
-    //      default: OrderStatus.NEW
-    // },
+      status: {
+        type: String,
+         default: OrderStatus.NEW
+    },
       user: {
         type: Schema.Types.ObjectId,
          required: true

@@ -12,6 +12,8 @@ export const environment = {
   FOODS_BY_ID: 'http://localhost:5000/api/foods/',
   USERS_LOGIN_URL: 'http://localhost:5000/api/users/login',
   USERS_REGISTER_URL: 'http://localhost:5000/api/users/register',
+  ORDER_URL: 'http://localhost:5000/api/orders',
+  ORDER_CREATE: 'http://localhost:5000/api/orders/create',
 
 
   USER_KEY: 'User'

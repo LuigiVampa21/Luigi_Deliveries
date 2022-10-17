@@ -25,10 +25,10 @@ app.get("/api", (req,res) => {
 
 app.use("/api/foods", foodRouter)
 app.use('/api/users', userRouter)
+app.use("/api/orders", orderRouter);
 
 
 
-// app.use("/orders", orderRouter);
 
 // app.use(express.static('public'));
 // app.get('*', (req, res) => {

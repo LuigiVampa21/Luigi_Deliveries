@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/shared/models/user.model';
+import { User } from 'src/app/shared/models/User.model';
 import { UserLogin } from 'src/app/shared/interfaces/user.login.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 
