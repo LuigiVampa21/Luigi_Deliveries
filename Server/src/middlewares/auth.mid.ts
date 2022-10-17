@@ -8,9 +8,7 @@ export default (req: any, res: any, next: any) => {
 
     try {
         const decodedUser = verify(token, process.env.JWT_SECRET!);
-        req.user = decodedUser;
-        console.log(req.user);
-        
+        req.user = decodedUser;        
 
     } catch (error) {
         res.status(StatusCodes.BAD_REQUEST).send();

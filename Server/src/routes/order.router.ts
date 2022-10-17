@@ -12,7 +12,6 @@ router.use(auth);
 router.post('/create', async (req: any,res: any)=>{
     const requestOrder = req.body;
     const { id } = req.user;
-    console.log(id);
 if(requestOrder.items.length <= 0){
     res.status(StatusCodes.BAD_REQUEST).send('Cart is empty');
     return;
